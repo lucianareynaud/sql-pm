@@ -12,3 +12,13 @@ FROM onboarding_modals
 GROUP BY 1 
 ORDER BY 1;
 
+--We can use a CASE statement within our COUNT() aggregate so that we only count user_ids whose ab_group is equal to ‘control’
+SELECT modal_text,
+  COUNT(DISTINCT CASE
+    WHEN ab_group = 'control' THEN user_id
+    END) AS 'control_clicks'
+FROM onboarding_modals
+GROUP BY 1
+ORDER BY 1;
+
+
