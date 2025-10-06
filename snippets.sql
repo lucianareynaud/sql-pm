@@ -39,5 +39,13 @@ FROM onboarding_modals
 GROUP BY 1
 ORDER BY 1;
 
+SELECT *
+FROM browse AS 'b'
+LEFT JOIN checkout AS 'c'
+    ON c.user_id = b.user_id
+LEFT JOIN purchase AS 'p'
+    ON p.user_id = c.user_id
+LIMIT 50;
+
 
 
